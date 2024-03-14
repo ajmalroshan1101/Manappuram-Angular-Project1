@@ -10,7 +10,7 @@ import { SharedService } from "./service/shared.service";
 
 @NgModule({
     declarations:[
-        DashboardComponent
+        DashboardComponent,
     ],
     imports:[
         CommonModule,

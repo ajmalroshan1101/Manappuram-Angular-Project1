@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper flex flex-col justify-center">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container mx-auto">
@@ -20,14 +20,14 @@
     <!-- /.content-header -->
 
 
-    <section class="content">
-        <div class="container mx-auto">
+    <section class="max-w-full ">
+        <div class="w-full">
             <!-- Small boxes (Stat box) -->
-            <div class="flex flex-wrap -mx-4">
+            <div class="flex flex-wrap -mx-4 justify-center">
                 <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
                     <!-- small box 1-->
                     <div class="bg-blue-500 rounded-lg p-4 text-white">
-                        <p>No.of Vendors</p>
+                        <p>No. Vendors</p>
                         <div class="text-3xl font-bold">{{vendorcount}}</div>
                     </div>
                 </div>
@@ -35,32 +35,106 @@
                 <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
                     <!-- small box 2-->
                     <div class="bg-blue-500 rounded-lg p-4 text-white">
-                        <div class="text-3xl font-bold">150</div>
-                        <p>New Orders</p>
-                    </div>
-                </div>
-
-                <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
-                    <!-- small box 3 -->
-                    <div class="bg-blue-500 rounded-lg p-4 text-white">
-                        <div class="text-3xl font-bold">150</div>
-                        <p>New Orders</p>
-                    </div>
-                </div>
-
-                <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
-                    <!-- small box 4-->
-                    <div class="bg-blue-500 rounded-lg p-4 text-white">
-                        <div class="text-3xl font-bold">150</div>
-                        <p>New Orders</p>
+                        <p>No.Customer</p>
+                        <div class="text-3xl font-bold">{{customercount}}</div>
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
-            <!-- Main row -->
-            <!-- Remaining content can be converted similarly -->
         </div>
+
+        <form class="flex flex-col items-center justify-center mt-4" (ngSubmit)="submitForm()">
+            <div class="flex flex-col mr-4">
+                <label for="fromDate" class="mb-2">From Date:</label>
+                <input type="date" id="fromDate" name="fromDate" class="p-2 border rounded" [(ngModel)]="fromDate">
+            </div>
+            <div class="flex flex-col mr-4">
+                <label for="toDate" class="mb-2">To Date:</label>
+                <input type="date" id="toDate" name="toDate" class="p-2 border rounded" [(ngModel)]="toDate">
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+        </form>
+
         <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
+    <!--        
+    <table *ngIf="showTable" class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+            <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer Name</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            <tr *ng For="let item of searchData">
+                <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_name }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_date }}</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <div class="table-container">
+        <table *ngIf="showTable" class="min-w-full divide-y divide-gray-200 overflow-x-auto">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer Name</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Billing Address 1</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Billing Address 2</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pin Code</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GSTIN</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PAN</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">State</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                <tr *ngFor="let item of mergedData1">
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_date }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_bill_address1 }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_bill_address2 }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_bill_pin_code }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_gstin }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_pan }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_phone }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_state }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <button (click)="exportToDataExcel()">Export</button>
 </div>
+
+
+
+
+
+
+<!-- /.row -->
+<!-- Main row -->
+<!-- Remaining content can be converted similarly -->
+<!-- <div class="flex flex-col -mx-4 justify-center ">
+
+                <form action="flex ">
+                    <div class="flex">
+                        <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
+                            small box 3
+                            <div class="bg-blue-500 rounded-lg p-4 text-white">
+                                <p>From</p>
+                                <input type="date" name="" id="" class="text-black">
+                            </div>
+                        </div>
+
+                        <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
+                            small box 4
+                            <div class="bg-blue-500 rounded-lg p-4 text-white">
+                                <p>To</p>
+                                <input type="date" name="" id="" class="text-black">
+                            </div>
+                        </div>
+                    </div>
+                    <button>Submit</button>
+                </form>
+            </div> -->
