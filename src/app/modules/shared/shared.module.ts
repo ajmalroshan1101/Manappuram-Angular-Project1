@@ -6,11 +6,13 @@ import { sharedRouterModule } from "./shared-routing.module";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { HttpClientModule } from '@angular/common/http';
 import { SharedService } from "./service/shared.service";
+import { OrderlistComponent } from "./components/orderlist/orderlist.component";
 
 
 @NgModule({
     declarations:[
         DashboardComponent,
+        OrderlistComponent
     ],
     imports:[
         CommonModule,

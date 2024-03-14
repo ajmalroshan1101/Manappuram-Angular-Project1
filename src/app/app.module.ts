@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './modules/shared/components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { OrderlistComponent } from './modules/shared/components/orderlist/orderlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
