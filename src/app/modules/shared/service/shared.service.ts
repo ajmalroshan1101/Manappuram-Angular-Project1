@@ -24,4 +24,10 @@ export class SharedService {
         
         return this.http.post<Date>(`${this.baseUrl}/common/searchdate`, { date1, date2 });
     }
+
+    searchOders(date1: Date, date2: Date): Observable<any> {
+        console.log(date1 , date2);
+        
+        return this.http.post<Date>(`${this.baseUrl}/common/searchoder1`, { date1, date2 });
+    }
 }

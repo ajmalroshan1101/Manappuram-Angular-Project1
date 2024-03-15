@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit{
 
-  collapseShow = "hidden";
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    
   }
-  toggleCollapseShow(classes:any) {
-    this.collapseShow = classes;
+  isSidebarOpen: boolean = true; // Initially set to true to show the sidebar
+
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 }
