@@ -4,20 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './modules/shared/components/dashboard/dashboard.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { LoginpageComponent } from './loginpage/loginpage.component';
+import { LoginpageComponent } from './components/loginpage/loginpage.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DepartmentstockComponent } from './modules/shared/components/departmentstock/departmentstock.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
     LoginpageComponent,
+  
+  
+ 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

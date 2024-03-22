@@ -7,19 +7,34 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { HttpClientModule } from '@angular/common/http';
 import { SharedService } from "./service/shared.service";
 import { OrderlistComponent } from "./components/orderlist/orderlist.component";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { DashboardHomePageComponent } from "./components/dashboard-home-page/dashboard-home-page.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TopBarComponent } from "./components/top-bar/top-bar.component";
+import { StockComponent } from "./components/stock/stock.component";
+import { DepartmentstockComponent } from "./components/departmentstock/departmentstock.component";
+
+
+
 
 
 @NgModule({
     declarations:[
         DashboardComponent,
-        OrderlistComponent
+        OrderlistComponent,
+        SidebarComponent,
+        DashboardHomePageComponent,
+        TopBarComponent,
+        StockComponent,
+        DepartmentstockComponent
+        
     ],
     imports:[
         CommonModule,
         RouterModule,
         FormsModule,
         sharedRouterModule,
-        HttpClientModule
+        HttpClientModule,
     ],
     providers:[SharedService]
 })

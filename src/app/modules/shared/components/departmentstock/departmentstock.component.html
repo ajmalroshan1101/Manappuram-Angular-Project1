@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="input-container flex flex-col">
+        <label for="input1">Branch</label>
+        <input type="text" id="input1" [(ngModel)]="selectedValue" class="w-full border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-indigo-500" [disabled]="true">
+    </div>
+    <div class="input-container">
+        <select id="dropdown" [(ngModel)]="selectedValue" class="w-20 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+        <option *ngFor="let option of dropdownData" [value]="option.branch_name">
+          {{ option.branch_name }}
+        </option>
+      </select>
+    </div>
+    <div class="input-container flex flex-col">
+        <label for="input2">Department</label>
+        <input type="text" id="input2" [(ngModel)]="selectedValue2" class="w-full border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-indigo-500" [disabled]="true">
+    </div>
+    <div class="input-container">
+        <select id="dropdown" [(ngModel)]="selectedValue2" class="w-20 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+        <option *ngFor="let option of departmentData" [value]="option.department">
+          {{ option.department }}
+        </option>
+      </select>
+    </div>
+
+    <button (click)="onsubmit(selectedValue ,selectedValue2 )">Submit</button>
+</div>

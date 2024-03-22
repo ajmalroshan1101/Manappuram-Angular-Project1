@@ -1,12 +1,12 @@
-<div class="content-wrapper flex flex-col justify-center">
+<div class="content-wrapper flex flex-col justify-center ">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container mx-auto">
+    <!-- <div class="">
+        <div class="container ">
             <div class="flex flex-wrap items-center justify-between py-2 border-b border-gray-300">
-                <div class="w-full md:w-6/12">
-                    <h1 class="m-0 text-2xl font-bold">Dashboard</h1>
+                <div class=" ">
+                    <h1 class="pl-10 text-2xl font-bold">Dashboard</h1>
                 </div>
-                <div class="w-full md:w-6/12 text-right">
+                <div class="text-right">
                     <nav class="inline-block" aria-label="breadcrumb">
                         <ol class="list-none p-0 inline-flex">
                             <li class="breadcrumb-item"><a href="#" class="text-blue-500">Home</a></li>
@@ -16,14 +16,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- /.content-header -->
 
 
-    <section class="max-w-full ">
-        <div class="w-full">
+    <section class="">
+        <div class="">
             <!-- Small boxes (Stat box) -->
-            <div class="flex flex-wrap -mx-4 justify-center">
+            <div class="flex flex-wrap  justify-center">
                 <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
                     <!-- small box 1-->
                     <div class="bg-blue-500 rounded-lg p-4 text-white">
@@ -56,23 +56,9 @@
 
         <!-- /.container-fluid -->
     </section>
-    <!--        
-    <table *ngIf="showTable" class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50">
-            <tr>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer Name</th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-            </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-            <tr *ng For="let item of searchData">
-                <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_name }}</td>
-                <td class="px-6 py-4 whitespace-nowrap">{{ item.cust_date }}</td>
-            </tr>
-        </tbody>
-    </table> -->
 
-    <div class="table-container">
+
+    <div class="table-container pl-20">
         <table *ngIf="showTable" class="min-w-full divide-y divide-gray-200 overflow-x-auto">
             <thead class="bg-gray-50">
                 <tr>
@@ -102,7 +88,6 @@
             </tbody>
         </table>
     </div>
-
 
     <button (click)="exportToDataExcel()">Export</button>
 </div>
