@@ -8,3 +8,10 @@
 .input-container {
     margin-bottom: 10px;
 }
+
+.table-container {
+    width: 80%;
+    /* Set the width of the container */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+}

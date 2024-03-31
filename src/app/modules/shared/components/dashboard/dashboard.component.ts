@@ -32,7 +32,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.sharedservice.showvendor().subscribe({
       next: (data) => {
-        console.log(data);
 
         this.vendorcount = data.length;
       },
@@ -57,7 +56,6 @@ export class DashboardComponent implements OnInit {
 
     this.sharedservice.searchdate(this.fromDate, this.toDate).subscribe({
       next: (data) => {
-        console.log(data);
 
         this.searchData1 = data.result;
         this.searchData2 = data.otherResult;

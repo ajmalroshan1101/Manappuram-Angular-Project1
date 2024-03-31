@@ -1,48 +1,78 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { ReturnStatement } from '@angular/compiler';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
-
 export class SharedService {
+  baseUrl = 'http://localhost:5000';
+  constructor(private http: HttpClient) {}
 
+  showvendor(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/common/showvendor`);
+  }
 
-    baseUrl = 'http://localhost:5000'
-    constructor(private http: HttpClient) { }
+  showcustomer(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/common/showcustomer`);
+  }
 
-    showvendor(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.baseUrl}/common/showvendor`);
+  searchdate(date1: Date, date2: Date): Observable<any> {
+    return this.http.post<Date>(`${this.baseUrl}/common/searchdate`, {
+      date1,
+      date2,
+    });
+  }
 
-    }
+  searchOders(date1: Date, date2: Date): Observable<any> {
+    return this.http.post<Date>(`${this.baseUrl}/common/searchoder1`, {
+      date1,
+      date2,
+    });
+  }
 
-    showcustomer(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.baseUrl}/common/showcustomer`)
-    }
+  searchstockbybranch(data: string): Observable<any> {
+    return this.http.post<string>(
+      `${this.baseUrl}/common/searchstockbybranch`,
+      { data }
+    );
+  }
 
-    searchdate(date1: Date, date2: Date): Observable<any> {
-      
-        
-        return this.http.post<Date>(`${this.baseUrl}/common/searchdate`, { date1, date2 });
-    }
+  branchdetails(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/common/branchdetails`);
+  }
 
-    searchOders(date1: Date, date2: Date): Observable<any> {
-        
-        
-        return this.http.post<Date>(`${this.baseUrl}/common/searchoder1`, { date1, date2 });
-    }
+  searchstochbydepartment(data: any): Observable<any[]> {
+    return this.http.post<any[]>(
+      `${this.baseUrl}/common/searchstochbydepartment`,
+      data
+    );
+  }
 
-    searchstockbybranch(data:string): Observable<any> {
-       
-        
-        return this.http.post<string>(`${this.baseUrl}/common/searchstockbybranch`, {data});
-    }
+  listingSubDepartment(data: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/common/listingSubDepartment`, {
+      data,
+    });
+  }
 
-    branchdetails(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.baseUrl}/common/branchdetails`);
+  subsubepartment(data: string): Observable<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/common/subsubepartment`, {
+    data,
+    });
+  }
 
-    }
+  departmentStockDate(from:Date , to:Date ): Observable<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/common/departmentStockDate`, {FROM:from , TO:to});
+  }
 
-    searchstochbydepartment(data:any):Observable<any[]>{
-        return this.http.post<any[]>(`${this.baseUrl}/common/searchstochbydepartment` , data)
-    }
+  departmentStockDateAndBranch(from:Date , to:Date , branch:string): Observable<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchwise`, {FROM:from , TO:to , branch});
+  }
+
+  dateAndBranchAndDepartmentAPI(from:Date , to:Date , branch:string , department:string): Observable<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchanddepartment`, {FROM:from , TO:to , branch , department});
+  }
+
+  employeweight(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/common/employeweight`);
+  }
 }

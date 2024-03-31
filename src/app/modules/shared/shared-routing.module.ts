@@ -5,6 +5,7 @@ import { OrderlistComponent } from "./components/orderlist/orderlist.component";
 import { DashboardHomePageComponent } from "./components/dashboard-home-page/dashboard-home-page.component";
 import { StockComponent } from "./components/stock/stock.component";
 import { DepartmentstockComponent } from "./components/departmentstock/departmentstock.component";
+import { EmployestockComponent } from "./components/employestock/employestock.component";
 
 
 const routes : Routes = [
@@ -28,6 +29,10 @@ const routes : Routes = [
         {
             path:'department-stock',
             component:DepartmentstockComponent
+        },
+        {
+            path:'employe-stock',
+            component:EmployestockComponent
         }
 
     ]

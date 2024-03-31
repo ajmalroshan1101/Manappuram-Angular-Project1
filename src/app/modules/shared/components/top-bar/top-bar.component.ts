@@ -15,7 +15,6 @@ export class TopBarComponent {
 
   isMobileMenuOpen = true;
   toggleMenu() {
-    console.log('dssdf');
     
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }

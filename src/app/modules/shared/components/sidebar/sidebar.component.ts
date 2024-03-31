@@ -18,9 +18,7 @@ export class SidebarComponent implements OnInit{
     
     this.commonService.userData$.subscribe((data)=>{
      
-      this.username = data.emp_name;
-      console.log(this.username );
-      
+      this.username = data.emp_name;      
     })
   }
  

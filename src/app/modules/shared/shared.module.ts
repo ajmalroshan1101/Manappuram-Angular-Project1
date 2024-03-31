@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from "./components/top-bar/top-bar.component";
 import { StockComponent } from "./components/stock/stock.component";
 import { DepartmentstockComponent } from "./components/departmentstock/departmentstock.component";
+import { EmployestockComponent } from "./components/employestock/employestock.component";
 
 
 
@@ -26,7 +27,8 @@ import { DepartmentstockComponent } from "./components/departmentstock/departmen
         DashboardHomePageComponent,
         TopBarComponent,
         StockComponent,
-        DepartmentstockComponent
+        DepartmentstockComponent,
+        EmployestockComponent
         
     ],
     imports:[
