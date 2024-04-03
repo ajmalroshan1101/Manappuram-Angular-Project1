@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 
   export class CommonService{
 
-    baseUrl = 'http://localhost:5000'
+    baseUrl = 'http://51.20.121.169:5000'
 
     constructor(private http:HttpClient){}
 
