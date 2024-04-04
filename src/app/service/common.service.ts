@@ -27,6 +27,7 @@ import { BehaviorSubject, Observable } from "rxjs";
     }
 
     storeuser(type: string) {
+        console.log(type);
         
         localStorage.setItem('usertype', type);
       }

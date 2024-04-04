@@ -23,6 +23,8 @@ export class LoginpageComponent {
     this.commonService.findUser(formData.value).subscribe({
       next:(data)=>{
         
+        console.log(data);
+        
         if(data.success === false){
           
           this.bool = true;
