@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path:'shared',
     loadChildren: () => import('./modules/shared/shared.module').then((m) => m.SharedModule),
-    canActivate:[AuthGuard]
+    // canActivate:[AuthGuard]
   }
 ];
 

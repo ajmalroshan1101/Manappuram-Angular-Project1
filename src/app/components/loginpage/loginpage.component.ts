@@ -25,20 +25,22 @@ export class LoginpageComponent {
         
         console.log(data);
         
-        if(data.success === false){
+        // if(data.success === false){
           
-          this.bool = true;
-          this.message = 'Invalid user or Password'
-        }else if(data.success === true){
-          this.usertype = data.data[0].role_name;
-          this.commonService.setuser(data.data[0]);
-          this.commonService.storeuser(this.usertype);
+        //   this.bool = true;
+        //   this.message = 'Invalid user or Password'
+        // }else if(data.success === true){
+        //   this.usertype = data.data[0].role_name;
+        //   this.commonService.setuser(data.data[0]);
+        //   this.commonService.storeuser(this.usertype);
   
-          if(this.usertype === 'Casting'){
+        //   // if(this.usertype === 'Casting'){
             
-            this.router.navigate(['/shared/homepage'])
-          }
-        }
+        //     this.router.navigate(['/shared/homepage'])
+        //   // }
+        // }
+        this.router.navigate(['/shared/homepage'])
+
     
       },
       error:(err)=>{
