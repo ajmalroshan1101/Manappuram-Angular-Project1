@@ -5,8 +5,9 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class SharedService {
-  baseUrl = 'http://51.20.121.169:5000';
-  constructor(private http: HttpClient) {}
+//   baseUrl = 'http://51.20.121.169:5000';
+baseUrl = 'http://localhost:5000'
+constructor(private http: HttpClient) {}
 
   showvendor(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/common/showvendor`);
@@ -64,12 +65,12 @@ export class SharedService {
     return this.http.post<any[]>(`${this.baseUrl}/common/departmentStockDate`, {FROM:from , TO:to});
   }
 
-  departmentStockDateAndBranch(from:Date , to:Date , branch:string): Observable<any[]> {
-    return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchwise`, {FROM:from , TO:to , branch});
+  departmentStockDateAndBranch(branch:string): Observable<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchwise`, {branch});
   }
 
-  dateAndBranchAndDepartmentAPI(from:Date , to:Date , branch:string , department:string): Observable<any[]> {
-    return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchanddepartment`, {FROM:from , TO:to , branch , department});
+  dateAndBranchAndDepartmentAPI( branch:string , department:string): Observable<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchanddepartment`, {branch , department});
   }
 
   employeweight(): Observable<any[]> {

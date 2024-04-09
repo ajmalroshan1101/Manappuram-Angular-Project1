@@ -63,49 +63,31 @@ export class DepartmentstockComponent implements OnInit {
 
   fromDate!:Date;
   toDate!:Date;
-  // //This event function is for getting the branch nam and departmentr type for sending to backend
-  // onsubmit(brn: string, dep: string) {
-  //   const data = {
-  //     brn,
-  //     dep,
-  //   };
-
-    
-
-  //   //Here we have done a api call for finding the stock by department wise with data 
-  //   this.sharedservice.searchstochbydepartment(data).subscribe({
-  //     next: (data) => {
-  //       this.showthetable = true;
-  //       this.departmentdata = data;
-    
-  //     },
-  //     error: (err) => {},
-  //   });
-  // }
+ 
 
   // This event is for getting department sub categories from the dp 
   departmentbtn(dep: string) {
     
-    this.sharedservice.listingSubDepartment(dep).subscribe({
-      next: (data) => {
-        // Here we are taking sub-department of handmade
-        if (data.type === 'HAND MADE') {
-          this.subDepartmentofhandmade = data.data;
-          this.showsubdepboxForHandMade = true;
-          this.showsubdepboxForCastind = false;
+    // this.sharedservice.listingSubDepartment(dep).subscribe({
+    //   next: (data) => {
+    //     // Here we are taking sub-department of handmade
+    //     if (data.type === 'HAND MADE') {
+    //       this.subDepartmentofhandmade = data.data;
+    //       this.showsubdepboxForHandMade = true;
+    //       this.showsubdepboxForCastind = false;
 
 
-        } 
-        //Here we are taking sub-Department of Casting
-        else if (data.type === 'CASTING') {
-          this.subDepartmentofCasting = data.data;
-          this.showsubdepboxForCastind = true;
-          this.showsubdepboxForHandMade = false;
+    //     } 
+    //     //Here we are taking sub-Department of Casting
+    //     else if (data.type === 'CASTING') {
+    //       this.subDepartmentofCasting = data.data;
+    //       this.showsubdepboxForCastind = true;
+    //       this.showsubdepboxForHandMade = false;
       
-        }
-      },
-      error: (err) => {},
-    });
+    //     }
+    //   },
+    //   error: (err) => {},
+    // });
   }
 
   //input value of sud deaprtment of HAND MADE
@@ -152,10 +134,10 @@ export class DepartmentstockComponent implements OnInit {
   }
 
   //Branch wise api
-  branchWiseBtn(from:Date , to:Date , branch:string){
+  branchWiseBtn( branch:string){
 
-      console.log(from , to , branch);
-      this.sharedservice.departmentStockDateAndBranch(from , to , branch).subscribe({
+      console.log(branch);
+      this.sharedservice.departmentStockDateAndBranch(branch).subscribe({
         next:(data)=>{
 
           this.datebranch = data;
@@ -171,9 +153,9 @@ export class DepartmentstockComponent implements OnInit {
       
   }
 
-  dateAndBranchAndDepartment(from:Date , to:Date , branch:string , department:string ){
+  dateAndBranchAndDepartment( branch:string , department:string ){
 
-    this.sharedservice.dateAndBranchAndDepartmentAPI(from , to , branch , department).subscribe({
+    this.sharedservice.dateAndBranchAndDepartmentAPI(branch , department).subscribe({
       next:(data)=>{
        
         this.datebranchdepartment = data;
