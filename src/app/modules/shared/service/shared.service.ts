@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class SharedService {
-  baseUrl = 'http://51.20.121.169:5000';
-// baseUrl = 'http://localhost:5000'
+  // baseUrl = 'http://51.20.121.169:5000';
+baseUrl = 'http://localhost:5000'
 constructor(private http: HttpClient) {}
 
   showvendor(): Observable<any[]> {

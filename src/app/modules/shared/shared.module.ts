@@ -14,6 +14,11 @@ import { TopBarComponent } from "./components/top-bar/top-bar.component";
 import { StockComponent } from "./components/stock/stock.component";
 import { DepartmentstockComponent } from "./components/departmentstock/departmentstock.component";
 import { EmployestockComponent } from "./components/employestock/employestock.component";
+import { SalesreportComponent } from "./components/salesreport/salesreport.component";
+import { PurchaseANDjobworkComponent } from "./components/purchase-andjobwork/purchase-andjobwork.component";
+import { ProductionreportComponent } from "./components/productionreport/productionreport.component";
+import { FGstockreportComponent } from "./components/fgstockreport/fgstockreport.component";
+import { StocksummaryComponent } from "./components/stocksummary/stocksummary.component";
 
 
 
@@ -28,7 +33,12 @@ import { EmployestockComponent } from "./components/employestock/employestock.co
         TopBarComponent,
         StockComponent,
         DepartmentstockComponent,
-        EmployestockComponent
+        EmployestockComponent,
+        SalesreportComponent,
+        PurchaseANDjobworkComponent,
+        ProductionreportComponent,
+        FGstockreportComponent,
+        StocksummaryComponent,
         
     ],
     imports:[
