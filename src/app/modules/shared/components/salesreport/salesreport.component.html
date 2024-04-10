@@ -1,1 +1,53 @@
-<p>salesreport works!</p>
+
+<div class="flex flex-col space-y-4 justify-center items-center">
+    <label for="startDate">Start Date</label>
+    <input type="date" id="startDate" [(ngModel)]="startDate">
+  
+    <label for="endDate">End Date</label>
+    <input type="date" id="endDate" [(ngModel)]="endDate">
+  
+    <button (click)="submitDates()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Submit
+    </button>
+  </div>
+
+  <div class="container mx-auto py-8"  [hidden]="show">
+    <div class="overflow-x-auto">
+      <table class="table-auto border-collapse border border-gray-500">
+        <thead>
+          <tr>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Bill NO</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Trans Date</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Party Name</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Gr Wt</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Cls Wt</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Net Wt</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Mtl Amt</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Gold Rate</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Karat</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Labour Value</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Ggst Amt</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Sgst Amt</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">IgstAmt</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Tcs Amy</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Final Amount</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Purchase MC</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Branch Name</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">State</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Sub Category</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Product Style</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Inward Party Name</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Category</th>
+            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Mobilizer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Table data goes here -->
+        </tbody>
+      </table>
+    </div>
+
+    <button (click)="exportTableToExcel()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Export to Excel
+      </button>
+  </div>
