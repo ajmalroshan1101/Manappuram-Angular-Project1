@@ -1,1 +1,78 @@
-<p>fgstockreport works!</p>
+
+<div class="flex  space-y-4 justify-center items-center space-x-6">
+
+    <div class="flex flex-col">
+    <label for="startDate">Start Date</label>
+    <input type="date" id="startDate" [(ngModel)]="startDate">
+  
+</div>
+<div class="flex flex-col">
+    <label for="endDate">End Date</label>
+    <input type="date" id="endDate" [(ngModel)]="endDate">
+</div>
+
+<div>
+
+    <select [(ngModel)]="selectedCity" class="border px-3 py-2 rounded-md focus:outline-none focus:ring-blue-500">
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+
+      
+</div>
+
+
+
+    <button (click)="submitDates()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Submit
+    </button>
+  </div>
+
+<div class="container mx-auto py-8" [hidden]="show">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Category
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Bar code
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Variant Name
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Prodtype
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Sub Catg
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Karat
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Job Worker Vendor
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Gross Wt
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Stone Weight
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            N Wt
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Aging Days
+          </th>
+          <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Branch
+          </th>
+          <!-- Add more th elements for other headers -->
+        </tr>
+      </thead>
+    </table>
+    <button (click)="exportTableToExcel()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Export to Excel
+      </button>
+  </div>
+  

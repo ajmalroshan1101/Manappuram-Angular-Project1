@@ -8,7 +8,6 @@ import { ExcelService } from 'src/app/service/excel.service';
 })
 export class SalesreportComponent {
 
-
   tableData = [
     "Bill NO",
     "Trans Date",
@@ -35,10 +34,21 @@ export class SalesreportComponent {
     "Mobilizer"
   ];
   
+  selectedCity: string ='';
   startDate!: string;
   endDate!: string;
 
   show:boolean= true;
+
+  cities = [
+    'BANGALORE MANUFACTURING UNIT',
+    'KOLKATA MANUFACTURING UNIT',
+    'CUTTACK WHOLESALE OFFICE',
+    'NAGARATHPET WHOLE SALE OFFICE',
+    'COIMBATORE WHOLE SALE OFFICE',
+    'HYDERABAD WHOLE SALE OFFICE'
+  ];
+  
   
   constructor(private excelService: ExcelService) { }
 

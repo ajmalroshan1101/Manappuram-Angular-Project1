@@ -1,11 +1,26 @@
 
-<div class="flex flex-col space-y-4 justify-center items-center">
+<div class="flex  space-y-4 justify-center items-center space-x-6">
+    <div class="flex flex-col">
     <label for="startDate">Start Date</label>
     <input type="date" id="startDate" [(ngModel)]="startDate">
   
+</div>
+<div class="flex flex-col">
     <label for="endDate">End Date</label>
     <input type="date" id="endDate" [(ngModel)]="endDate">
-  
+</div>
+
+<div>
+
+    <select [(ngModel)]="selectedCity" class="border px-3 py-2 rounded-md focus:outline-none focus:ring-blue-500">
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+
+      
+</div>
+
+
+
     <button (click)="submitDates()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
       Submit
     </button>
