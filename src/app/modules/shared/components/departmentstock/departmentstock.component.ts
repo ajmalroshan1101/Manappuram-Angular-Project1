@@ -157,6 +157,8 @@ export class DepartmentstockComponent implements OnInit {
 
     this.sharedservice.dateAndBranchAndDepartmentAPI(branch , department).subscribe({
       next:(data)=>{
+        console.log(data);
+        
        
         this.datebranchdepartment = data;
         this.showDate = false;
@@ -171,7 +173,6 @@ export class DepartmentstockComponent implements OnInit {
     })
     
   }
-
 
   exportdata(data:any[]){
 
