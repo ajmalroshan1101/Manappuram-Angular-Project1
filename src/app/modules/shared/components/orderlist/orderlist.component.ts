@@ -28,6 +28,8 @@ export class OrderlistComponent implements OnInit {
 
     this.sharedService.searchOders(fromDate, toDate).subscribe({
       next: (data) => {
+        console.log(data);
+        
         this.orders = data;
       },
       error: (err) => {

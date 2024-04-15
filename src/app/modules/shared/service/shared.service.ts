@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class SharedService {
-  baseUrl = 'http://51.20.121.169:5000';
-// baseUrl = 'http://localhost:5000'
+  // baseUrl = 'http://51.20.121.169:5000';
+baseUrl = 'http://localhost:5000'
 constructor(private http: HttpClient) {}
 
   showvendor(): Observable<any[]> {
@@ -69,7 +69,7 @@ constructor(private http: HttpClient) {}
     return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchwise`, {branch});
   }
 
-  dateAndBranchAndDepartmentAPI( branch:string , department:string): Observable<any[]> {
+  dateAndBranchAndDepartmentAPI( branch:string , department:string): Observable<any> {
     return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchanddepartment`, {branch , department});
   }
 

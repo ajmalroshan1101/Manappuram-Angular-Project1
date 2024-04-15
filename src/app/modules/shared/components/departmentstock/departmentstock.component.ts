@@ -12,23 +12,14 @@ export class DepartmentstockComponent implements OnInit {
   constructor(private sharedservice: SharedService) {}
 
   dropdownData: any[] = [];
-  showthetable: boolean = false;
-  departmentdata: any[] = [];
-  subDepartmentofhandmade: any[] = [];
-  subDepartmentofCasting: any[] = [];
-  dateWiseData:any[] = [];
-  datebranch:any[]=[];
-  datebranchdepartment:any[]=[];
-  dataforsubdepartment:any[]=[];
+  handmadedata:any[]=[];
+  castingdata:any[]=[];
   selectedSubDepForHandMade!: any;
   selectedSubDepForCasting!: any;
 
-  showsubdepboxForHandMade: boolean = false;
-  showsubdepboxForCastind: boolean = false;
-  showDate:boolean = false;
-  showDateAndBranch:boolean = false;
-  showDateAndBranchAndDepartment:boolean = false;
-  showsubdepartment:boolean = false;
+  
+  showHandMadeTable:boolean = false;
+  showcastingtable:boolean = false;
 
   departmentData = [{ department: 'CASTING' }, { department: 'HAND MADE' }];
 
@@ -61,109 +52,31 @@ export class DepartmentstockComponent implements OnInit {
   selectedLabel: string = '';
   selectedValue2: string = '';
 
-  fromDate!:Date;
-  toDate!:Date;
- 
 
-  // This event is for getting department sub categories from the dp 
-  departmentbtn(dep: string) {
-    
-    // this.sharedservice.listingSubDepartment(dep).subscribe({
-    //   next: (data) => {
-    //     // Here we are taking sub-department of handmade
-    //     if (data.type === 'HAND MADE') {
-    //       this.subDepartmentofhandmade = data.data;
-    //       this.showsubdepboxForHandMade = true;
-    //       this.showsubdepboxForCastind = false;
-
-
-    //     } 
-    //     //Here we are taking sub-Department of Casting
-    //     else if (data.type === 'CASTING') {
-    //       this.subDepartmentofCasting = data.data;
-    //       this.showsubdepboxForCastind = true;
-    //       this.showsubdepboxForHandMade = false;
-      
-    //     }
-    //   },
-    //   error: (err) => {},
-    // });
-  }
-
-  //input value of sud deaprtment of HAND MADE
-  subsubdepartmentOfHandmade(ssub: any) {
-    
-    this.sharedservice.subsubepartment(ssub).subscribe({
-      next: (data) => {
-     
-        this.dataforsubdepartment = data;
-        this.showsubdepartment = true;
-        this.showDate = false;
-        this.showDateAndBranch = false;
-        this.showDateAndBranchAndDepartment = false;
-        
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
-
-  subsubdepartmentOfCasting(data: any) {
-    console.log(data);
-  }
-
-  //Date wise api
-  submitDate(FROM:Date , TO:Date){
-
-
-    this.sharedservice.departmentStockDate(FROM , TO).subscribe({
-      next:(data)=>{
-        this.dateWiseData = data;
-        this.showDate = true;
-        this.showDateAndBranch = false;
-        this.showDateAndBranchAndDepartment = false;
-        
-      },
-      error:(err)=>{
-        console.log(err);
-        
-      }
-    })
-    
-  }
-
-  //Branch wise api
-  branchWiseBtn( branch:string){
-
-      console.log(branch);
-      this.sharedservice.departmentStockDateAndBranch(branch).subscribe({
-        next:(data)=>{
-
-          this.datebranch = data;
-          this.showDate = false;
-          this.showDateAndBranch = true;
-          this.showDateAndBranchAndDepartment = false;
-          
-        },error:(err)=>{
-          console.log(err);
-          
-        }
-      })
-      
-  }
 
   dateAndBranchAndDepartment( branch:string , department:string ){
 
     this.sharedservice.dateAndBranchAndDepartmentAPI(branch , department).subscribe({
       next:(data)=>{
-        console.log(data);
+     
         
+        if(data.dep === 'hand'){
+
+
+          this.handmadedata = data.result;
+          this.showHandMadeTable = true;
+          this.showcastingtable = false;
+
+          
+
+        }else if(data.dep === 'cast'){
+
+          this.castingdata = data.result;
+          this.showcastingtable = true;
+          this.showHandMadeTable = false;
+        }
+              
        
-        this.datebranchdepartment = data;
-        this.showDate = false;
-        this.showDateAndBranch = false;
-        this.showDateAndBranchAndDepartment = true;
         
       },
       error:(err)=>{
