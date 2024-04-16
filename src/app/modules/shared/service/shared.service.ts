@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class SharedService {
   baseUrl = 'http://51.20.121.169:5000';
-// baseUrl = 'http://localhost:5000'
+// baseUrl = 'http://localhost:5000' ;
 constructor(private http: HttpClient) {}
 
   showvendor(): Observable<any[]> {
@@ -75,5 +75,10 @@ constructor(private http: HttpClient) {}
 
   employeweight(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/common/employeweight`);
+  }
+
+  salereport(from:Date , to:Date , branch :string):Observable<any[]>{
+
+    return this.http.post<any[]>(`${this.baseUrl}/common/salereport` , {from , to , branch})
   }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ExcelService } from 'src/app/service/excel.service';
+import { SharedService } from '../../service/shared.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-salesreport',
@@ -7,36 +9,11 @@ import { ExcelService } from 'src/app/service/excel.service';
   styleUrls: ['./salesreport.component.css']
 })
 export class SalesreportComponent {
-
-  tableData = [
-    "Bill NO",
-    "Trans Date",
-    "Party Name",
-    "Gr Wt",
-    "Cls Wt",
-    "Net Wt",
-    "Mtl Amt",
-    "Gold Rate",
-    "Karat",
-    "Labour Value",
-    "Ggst Amt",
-    "Sgst Amt",
-    "IgstAmt",
-    "Tcs Amy",
-    "Final Amount",
-    "Purchase MC",
-    "Branch Name",
-    "State",
-    "Sub Category",
-    "Product Style",
-    "Inward Party Name",
-    "Category",
-    "Mobilizer"
-  ];
   
   selectedCity: string ='';
-  startDate!: string;
-  endDate!: string;
+  startDate!: Date;
+  endDate!: Date;
+  saleData:any[] = [] ;
 
   show:boolean= true;
 
@@ -50,19 +27,38 @@ export class SalesreportComponent {
   ];
   
   
-  constructor(private excelService: ExcelService) { }
+  constructor(private excelService: ExcelService , private sharedservice:SharedService) { }
 
 
-  exportTableToExcel(): void {
-    this.excelService.exportToExcel(this.tableData);
+  
+  submitDates(from:Date , to:Date , branch:string) {
+    
+    
+    
+    this.sharedservice.salereport(from , to , branch).subscribe({
+      next:(data)=>{
+        
+        this.saleData = data
+        this.show= false;
+      },
+      error:(err)=>{
+        
+      }
+    })
+    
   }
+  
+  // exportTableToExcel(): void {
+  //   this.excelService.exportToExcel(this.saleData);
+  // }
 
-  submitDates() {
-    console.log('Start Date:', this.startDate);
-    console.log('End Date:', this.endDate);
-    // You can perform further actions here, such as sending the dates to a service
+  exportToExcel(data: any[]) { 
+    let count = 0;
+    count++
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, `sheet ${count}`);
 
-    this.show= false;
-  }
-
+    XLSX.writeFile(wb, 'export.xlsx');
+}
 }

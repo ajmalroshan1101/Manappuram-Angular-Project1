@@ -1,68 +1,91 @@
+<div class="flex flex-col items-center w-full">
 
-<div class="flex  space-y-4 justify-center items-center space-x-6">
-    <div class="flex flex-col">
-    <label for="startDate">Start Date</label>
-    <input type="date" id="startDate" [(ngModel)]="startDate">
-  
+    <div class="flex    items-center justify-evenly space-x-4">
+        <div class="flex flex-col">
+            <label for="startDate">Choose Start Date</label>
+            <input type="date" id="startDate" [(ngModel)]="startDate">
+
+        </div>
+        <div class="flex flex-col">
+            <label for="endDate">Choose End Date</label>
+            <input type="date" id="endDate" [(ngModel)]="endDate">
+        </div>
+
+        <div class="flex flex-col">
+            <label for="branch">Choose Branch</label>
+            <select id="branch" [(ngModel)]="selectedCity" class="border px-3 py-2 rounded-md focus:outline-none focus:ring-blue-500">
+          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+        </select>
+
+
+        </div>
+
+
+
+    </div>
+    <button (click)="submitDates(startDate , endDate , selectedCity)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5">
+        Submit
+      </button>
 </div>
-<div class="flex flex-col">
-    <label for="endDate">End Date</label>
-    <input type="date" id="endDate" [(ngModel)]="endDate">
-</div>
 
-<div>
-
-    <select [(ngModel)]="selectedCity" class="border px-3 py-2 rounded-md focus:outline-none focus:ring-blue-500">
-        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
-      </select>
-
-      
-</div>
-
-
-
-    <button (click)="submitDates()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      Submit
-    </button>
-  </div>
-
-  <div class="container mx-auto py-8"  [hidden]="show">
+<div class="container mx-auto py-8" [hidden]="show">
     <div class="overflow-x-auto">
-      <table class="table-auto border-collapse border border-gray-500">
-        <thead>
-          <tr>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Bill NO</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Trans Date</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Party Name</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Gr Wt</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Cls Wt</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Net Wt</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Mtl Amt</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Gold Rate</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Karat</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Labour Value</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Ggst Amt</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Sgst Amt</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">IgstAmt</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Tcs Amy</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Final Amount</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Purchase MC</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Branch Name</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">State</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Sub Category</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Product Style</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Inward Party Name</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Category</th>
-            <th class="px-4 py-2 bg-gray-100 border border-gray-500">Mobilizer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Table data goes here -->
-        </tbody>
-      </table>
+        <table class="table-auto border-collapse border border-gray-500">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Bill NO</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Trans Date</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Party Name</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Gr Wt</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Cls Wt</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Net Wt</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Mtl Amt</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Gold Rate</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Karat</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Cgst Amt</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Sgst Amt</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">IgstAmt</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Tcs Amy</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Final Amount</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Branch Name</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">State</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Sub Category</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Product Style</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Category</th>
+                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Mobilizer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tbody>
+                    <tr *ngFor="let item of saleData">
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.bill_no }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.trans_date }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.party_name}}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.gr_wt }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.cls_wt }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.net_wt}}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.mtl_amt }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.gold_rate }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.karat}}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.cgst_amt }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.sgst_amt }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.igst_amt }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.tcs_amt }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.final_amount }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.branch}}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.state }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.sub_category }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.product_style }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.category }}</td>
+                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.mobilizer }}</td>
+                    </tr>
+                </tbody>
+
+
+        </table>
     </div>
 
-    <button (click)="exportTableToExcel()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button (click)="exportToExcel(saleData)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Export to Excel
       </button>
-  </div>
+</div>
