@@ -109,6 +109,8 @@ export class DepartmentstockComponent implements OnInit {
         else if(data.dep === 'gcd'){
           this.gcddata = data.result
           this.showgcdtable = true ;
+          this.showcastingtable = false;
+          this.showHandMadeTable = false;
           // console.log(data.result);
           
         }

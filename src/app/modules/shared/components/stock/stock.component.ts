@@ -39,6 +39,18 @@ export class StockComponent implements OnInit {
   filteredCities: string[] = this.cities; // Initially show all cities
   searchTerm = '';
 
+  employeestock:any []= [];
+  departmentstock:any []= [];
+  barcoding:any []= [];
+  castingtemp:any []= [];
+  show:boolean= false;
+
+  kolkatadata:any[]=[];
+  showKOL:boolean = false;
+  showtext:boolean = false;
+
+  lucknow:any[]=[];
+  showluck:boolean = false;
   ngOnInit(): void {
    
 
@@ -58,47 +70,126 @@ export class StockComponent implements OnInit {
       this.selectedCity = this.cities[0];
   }
 
-  onSubmit(data:string) {
+  onSubmit(data:string){
 
-  
-    this.sharedserive.searchstockbybranch(data).subscribe({
+    if(data === 'BANGALORE MANUFACTURING UNIT'){
+
+      this.showtext = false;
+      this.showluck = false;
+      this.showKOL = false;
+      this.sharedserive.employeestock(data).subscribe({
+        next:(data)=>{
+         
+         this.employeestock = data
+         this.show = true
+         
+          
+        }
+      }) 
+      this.sharedserive.departmentstock(data).subscribe({
+        next:(data)=>{
+          this.departmentstock = data
+          this.show = true
+        }
+      }) 
+      this.sharedserive.barcodingstock(data).subscribe({
+        next:(data)=>{
+          this.barcoding = data
+          this.show = true
+        }
+      }) 
+      this.sharedserive.castingtemp(data).subscribe({
+        next:(data)=>{
+          this.castingtemp = data
+          this.show = true
+          
+        }
+      }) 
+    }
+    else if(data === 'KOLKATA MANUFACTURING UNIT'){
+
+      this.sharedserive.KOLKATA(data).subscribe({
+        next:(data)=>{
+
+          this.kolkatadata = data
+          console.log(this.kolkatadata);
+          
+          this.show = false;
+          this.showKOL = true;
+          this.showtext = false;
+          this.showluck = false;
+        },
+        error:(err)=>{
+
+        }
+      })
+      
+
+    }
+    else if(data === 'CUTTACK WHOLESALE OFFICE'){
+      console.log(2);
+      this.showtext = true;
+      this.showluck = false;
+
+      this.show = false;
+      this.showKOL = false
+    }
+    else if(data === 'NAGARATHPET WHOLE SALE OFFICE'){
+      console.log(3);
+      this.showtext = true;
+      this.showluck = false;
+      this.show = false;
+      this.showKOL = false
+    }
+    else if(data === 'COIMBATORE WHOLE SALE OFFICE'){
+      console.log(4);
+      this.showtext = true;
+      this.showluck = false;
+      this.show = false;
+      this.showKOL = false
+    }
+    else if(data === 'HYDERABAD WHOLE SALE OFFICE'){
+      console.log(5);
+      this.showtext = true;
+      this.showluck = false;
+      this.show = false;
+      this.showKOL = false
+    }
+    else if(data === 'Outsourcing Cum Sales Office At Kolkatta'){
+      console.log(6);
+      this.showtext = true;
+      this.show = false;
+      this.showKOL = false
+      this.showluck = false;
+    }
+    else if(data === 'Trust Kolkata'){
+      console.log(7);
+      this.showtext = true;
+      this.showluck = false;
+      this.show = false;
+      this.showKOL = false
+    }
+    else if(data === 'LUCKNOW'){
+     this.sharedserive.LUCKNOW(data).subscribe({
       next:(data)=>{
 
-        this.showthetable = true;
-        this.arrayofdata = data;
+        this.lucknow = data;
+        this.showluck = true;
+        this.show = false;
+        this.showKOL = false;
+        this.showtext = false;
 
-        const weightSumByVariant = data.reduce((acc: { variant: string, weight: number }[], item: any) => {
-          // Convert weight string to number
-          const weight = parseInt(item.weight, 10);
-        
-          // Check if variant name exists in accumulator
-          const existingVariant = acc.find(entry => entry.variant === item.gold_alloy_variant_name);
-        
-          // If variant exists, update weight
-          if (existingVariant) {
-            existingVariant.weight += weight;
-          } else {
-            // If variant doesn't exist, create a new object and add it to accumulator
-            acc.push({
-              variant: item.gold_alloy_variant_name,
-              weight: weight
-            });
-          }
-        
-          return acc;
-        }, []);
-        
-        this.totalsum= weightSumByVariant 
-        
-        
-      },
-      error:(err)=>{
-        console.error(err);
-        
+
+      },error:(err)=>{
+
       }
-    })
-  }
+     })
 
+
+    }
+
+    
+  }
 
 
   exportToExcelTotal() {

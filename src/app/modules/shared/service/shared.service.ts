@@ -92,4 +92,43 @@ constructor(private http: HttpClient) {}
   showbranch():Observable<any[]>{
     return this.http.get<any[]>(`${this.baseUrl}/common/showbranch`);
   }
+
+   
+  employeestock(branch: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/common/employeestock`, {
+      branch,
+    });
+  }
+
+  departmentstock(branch: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/common/departmentstock`, {
+      branch,
+    });
+  }
+
+  barcodingstock(branch: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/common/barcodingstock`, {
+      branch,
+    });
+  }
+
+  castingtemp(branch: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/common/castingtemp`, {
+      branch,
+    });
+  }
+
+  KOLKATA(branch: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/common/KOLKATA`, {
+      branch,
+    });
+  }
+
+  
+
+  LUCKNOW(branch: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/common/LUCKNOW`, {
+      branch,
+    });
+  }
 }

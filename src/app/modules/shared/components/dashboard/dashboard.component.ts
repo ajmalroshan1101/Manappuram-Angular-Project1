@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
 
         this.lenghtofgcd = data.length
          this.totalSum = data.map(parseFloat).reduce((sum:any, value:any) => sum + value, 0);
-        console.log(this.totalSum);
+      
         
       },
       error:(err)=>{

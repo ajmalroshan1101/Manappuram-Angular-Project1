@@ -1,3 +1,86 @@
-<div class="flex justify-center h-screen">
+<!-- <div class="flex justify-center h-screen">
     <h1 class="text-4xl text-center">Under Development</h1>
+</div> -->
+
+
+<div class="flex  items-center space-x-10 ml-52">
+    <div>
+        <h1 class="text-xl font-semibold">Choose Branch</h1>
+        <select [(ngModel)]="selectedCity" class="mt-1 block w-48 px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
+            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+        </select>
+    </div>
+    <button type="submit" class="px-4 py-2 mt-5 bg-blue-500 text-white rounded-md hover:bg-blue-700 font-medium" (click)="onSubmit(selectedCity)">Submit</button>
+</div>
+
+<div class="container mx-auto mt-10" *ngIf="show">
+    <h1 class="text-xl font-semibold  mb-4 ml-64">Employee Stock</h1>
+    <table class="table-auto w-3/5 mx-auto">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">Purity</th>
+                <th class="px-4 py-2">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of employeestock" class="text-center">
+                <td class="border px-4 py-2">{{ item.purity }}</td>
+                <td class="border px-4 py-2">{{ item.weight }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--  -->
+<div class="container mx-auto" *ngIf="show">
+    <h1 class="text-xl font-semibold  mb-4 ml-64">Department Stock</h1>
+    <table class="table-auto w-3/5 mx-auto">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">Purity</th>
+                <th class="px-4 py-2">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of departmentstock" class="text-center">
+                <td class="border px-4 py-2">{{ item.purity }}</td>
+                <td class="border px-4 py-2">{{ item.weight }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--  -->
+<div class="container mx-auto" *ngIf="show">
+    <h1 class="text-xl font-semibold  mb-4 ml-64">Barcoding Stock</h1>
+    <table class="table-auto w-3/5 mx-auto">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">Purity</th>
+                <th class="px-4 py-2">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of barcoding" class="text-center">
+                <td class="border px-4 py-2">{{ item.purity }}</td>
+                <td class="border px-4 py-2">{{ item.weight }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--  -->
+<div class="container mx-auto" *ngIf="show">
+    <h1 class="text-xl font-semibold  mb-4 ml-64">Casting department Stock</h1>
+    <table class="table-auto w-3/5 mx-auto">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">Purity</th>
+                <th class="px-4 py-2">Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of castingtemp" class="text-center">
+                <td class="border px-4 py-2">{{ item.purity }}</td>
+                <td class="border px-4 py-2">{{ item.weight }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
