@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ExcelService } from 'src/app/service/excel.service';
 import { SharedService } from '../../service/shared.service';
 import * as XLSX from 'xlsx';
@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
   templateUrl: './salesreport.component.html',
   styleUrls: ['./salesreport.component.css']
 })
-export class SalesreportComponent {
+export class SalesreportComponent implements OnInit{
   
   selectedCity: string ='';
   startDate!: Date;
@@ -17,19 +17,24 @@ export class SalesreportComponent {
 
   show:boolean= true;
 
-  cities = [
-    'BANGALORE MANUFACTURING UNIT',
-    'KOLKATA MANUFACTURING UNIT',
-    'CUTTACK WHOLESALE OFFICE',
-    'NAGARATHPET WHOLE SALE OFFICE',
-    'COIMBATORE WHOLE SALE OFFICE',
-    'HYDERABAD WHOLE SALE OFFICE'
-  ];
+  cities :any [] = [];
+
+  showtext:boolean = false;
   
   
   constructor(private excelService: ExcelService , private sharedservice:SharedService) { }
 
+ngOnInit(): void {
+  
+  this.sharedservice.showbranch().subscribe({
+    next:(data)=>{
 
+      this.cities = data
+    },error:(err)=>{
+
+    }
+  })
+}
   
   submitDates(from:Date , to:Date , branch:string) {
     
@@ -38,8 +43,19 @@ export class SalesreportComponent {
     this.sharedservice.salereport(from , to , branch).subscribe({
       next:(data)=>{
         
-        this.saleData = data
-        this.show= false;
+        // this.saleData = data
+        // this.show= false;
+
+        if(data.length !== 0){
+          this.saleData = data
+          this.show= false;
+          this.showtext = false
+
+        }else{
+
+          this.show = true;
+          this.showtext = true;
+        }
       },
       error:(err)=>{
         

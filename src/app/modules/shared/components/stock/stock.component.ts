@@ -18,14 +18,16 @@ export class StockComponent implements OnInit {
 }
 
   constructor(private sharedserive:SharedService){}
-  cities = [
-    'BANGALORE MANUFACTURING UNIT',
-    'KOLKATA MANUFACTURING UNIT',
-    'CUTTACK WHOLESALE OFFICE',
-    'NAGARATHPET WHOLE SALE OFFICE',
-    'COIMBATORE WHOLE SALE OFFICE',
-    'HYDERABAD WHOLE SALE OFFICE'
-  ];
+  // cities = [
+  //   'BANGALORE MANUFACTURING UNIT',
+  //   'KOLKATA MANUFACTURING UNIT',
+  //   'CUTTACK WHOLESALE OFFICE',
+  //   'NAGARATHPET WHOLE SALE OFFICE',
+  //   'COIMBATORE WHOLE SALE OFFICE',
+  //   'HYDERABAD WHOLE SALE OFFICE'
+  // ];
+
+  cities:any []= [];
   selectedCity: string ='';
   
   arrayofdata:any[]=[] ;
@@ -38,8 +40,22 @@ export class StockComponent implements OnInit {
   searchTerm = '';
 
   ngOnInit(): void {
-     // Pre-select the first city initially (optional)
-     this.selectedCity = this.cities[0];
+   
+
+    this.sharedserive.showbranch().subscribe({
+      next:(data)=>{
+
+        this.cities = data;
+        console.log(data);
+        
+      },
+      error:(err)=>{
+
+      }
+    })
+
+      // Pre-select the first city initially (optional)
+      this.selectedCity = this.cities[0];
   }
 
   onSubmit(data:string) {

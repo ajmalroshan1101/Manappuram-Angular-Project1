@@ -7,10 +7,18 @@
             <!-- Small boxes (Stat box) -->
             <div class="flex flex-wrap  justify-center">
                 <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
-                    <!-- small box 1-->
+                    <!-- total number of stock-->
                     <div class="bg-blue-500 rounded-lg p-4 text-white">
-                        <p>No. Vendors</p>
-                        <div class="text-3xl font-bold">{{vendorcount}}</div>
+                        <p>No. GCD</p>
+                        <div class="text-3xl font-bold">{{lenghtofgcd}}</div>
+                    </div>
+                </div>
+
+                <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
+                    <!-- small number of finished goods-->
+                    <div class="bg-blue-500 rounded-lg p-4 text-white">
+                        <p>Total GCD</p>
+                        <div class="text-3xl font-bold">{{totalSum}}</div>
                     </div>
                 </div>
 
@@ -21,19 +29,41 @@
                         <div class="text-3xl font-bold">{{customercount}}</div>
                     </div>
                 </div>
+
+                <div class="w-full sm:w-1/2 md:w-1/4 px-4 mb-4">
+                    <!-- small box 1-->
+                    <div class="bg-blue-500 rounded-lg p-4 text-white">
+                        <p>No. Vendors</p>
+                        <div class="text-3xl font-bold">{{vendorcount}}</div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
         <form class="flex flex-col items-center justify-center mt-4" (ngSubmit)="submitForm()">
-            <div class="flex flex-col mr-4">
-                <label for="fromDate" class="mb-2">From Date:</label>
-                <input type="date" id="fromDate" name="fromDate" class="p-2 border rounded" [(ngModel)]="fromDate">
+
+            <div>
+
+                <h1>Customer list :</h1>
             </div>
-            <div class="flex flex-col mr-4">
-                <label for="toDate" class="mb-2">To Date:</label>
-                <input type="date" id="toDate" name="toDate" class="p-2 border rounded" [(ngModel)]="toDate">
+            <div class="flex ">
+
+                <div class="flex flex-col mr-4">
+                    <label for="fromDate" class="mb-2">From Date:</label>
+                    <input type="date" id="fromDate" name="fromDate" class="p-2 border rounded" [(ngModel)]="fromDate">
+                </div>
+                <div class="flex flex-col mr-4">
+                    <label for="toDate" class="mb-2">To Date:</label>
+                    <input type="date" id="toDate" name="toDate" class="p-2 border rounded" [(ngModel)]="toDate">
+                </div>
+
+
+
+                <button type="submit" class="bg-blue-500 text-white h-10 rounded mt-8 px-3">Submit</button>
+                <button *ngIf="showTable" class="bg-red-600 text-white h-10 ml-5 rounded mt-8 px-3" (click)="exportToDataExcel()">Export</button>
             </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
         </form>
 
         <!-- /.container-fluid -->
@@ -71,5 +101,5 @@
         </table>
     </div>
 
-    <button (click)="exportToDataExcel()">Export</button>
+
 </div>

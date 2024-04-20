@@ -12,14 +12,16 @@ export class SidebarComponent implements OnInit{
 
   constructor(private route:Router , private commonService:CommonService){}
 
-  username!:string;
+  username!:any;
+  branch!:any;
 
   ngOnInit(): void {
     
-    this.commonService.userData$.subscribe((data)=>{
-     
-      this.username = data.emp_name;      
-    })
+
+    this.username = this.commonService.getuser();
+
+    this.branch = this.commonService.getbranch();
+    
   }
  
 
@@ -27,6 +29,7 @@ export class SidebarComponent implements OnInit{
 
     this.route.navigate(['/']);
     this.commonService.removeusertype();
+    this.commonService.removebranch();
 
   }
 

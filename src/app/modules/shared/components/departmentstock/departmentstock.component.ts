@@ -21,7 +21,14 @@ export class DepartmentstockComponent implements OnInit {
   showHandMadeTable:boolean = false;
   showcastingtable:boolean = false;
 
-  departmentData = [{ department: 'CASTING' }, { department: 'HAND MADE' }];
+  showgcdtable:boolean = false;
+
+
+  shownodata:boolean = false;
+
+  gcddata:any[]=[];
+
+  departmentData = [{ department: 'CASTING' }, { department: 'HAND MADE' } , { department: 'GCD' }];
 
   exportToExcel(data: any[]) { 
     let count = 0;
@@ -63,19 +70,48 @@ export class DepartmentstockComponent implements OnInit {
         if(data.dep === 'hand'){
 
 
-          this.handmadedata = data.result;
-          this.showHandMadeTable = true;
-          this.showcastingtable = false;
+          if(data.result.length !== 0){
+
+            this.handmadedata = data.result;
+            this.showHandMadeTable = true;
+            this.showcastingtable = false;
+            this.showgcdtable = false ;
+            this.shownodata = false;
+          }else{
+
+            this.shownodata = true;
+            this.showcastingtable = false;
+            this.showHandMadeTable = false;
+            this.showgcdtable = false ;
+          }
 
           
 
         }else if(data.dep === 'cast'){
 
-          this.castingdata = data.result;
-          this.showcastingtable = true;
-          this.showHandMadeTable = false;
+          if(data.result.length !== 0){
+
+            this.castingdata = data.result;
+            this.showcastingtable = true;
+            this.showHandMadeTable = false;
+            this.showgcdtable = false ;
+
+            this.shownodata = false;
+          }else{
+
+            this.shownodata = true;
+            this.showcastingtable = false;
+            this.showHandMadeTable = false;
+            this.showgcdtable = false ;
+          }
         }
-              
+          
+        else if(data.dep === 'gcd'){
+          this.gcddata = data.result
+          this.showgcdtable = true ;
+          // console.log(data.result);
+          
+        }
        
         
       },

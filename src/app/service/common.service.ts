@@ -18,26 +18,33 @@ import { BehaviorSubject, Observable } from "rxjs";
         return this.http.post<Date>(`${this.baseUrl}/common/finduser`, data);
     }
 
-     private userSubject = new BehaviorSubject<any>(null)
-
-     userData$ = this.userSubject.asObservable();
-
-    setuser(data:any){
-
-        this.userSubject.next(data);
-    }
 
     storeuser(type: string) {
-        console.log(type);
         
         localStorage.setItem('usertype', type);
       }
 
-      getuser(): string | null {
+      getuser(){
         return localStorage.getItem('usertype');
       }
 
       removeusertype(): void {
         localStorage.removeItem('usertype');
+      }
+
+      //to store the branch in the localstorage
+      storebranch(type: string) {
+        
+        localStorage.setItem('branch', type);
+      }
+
+      //to the call the stored branch in the different component
+      getbranch(){
+        return localStorage.getItem('branch');
+      }
+
+      //to remove the local stored values
+      removebranch(): void {
+        localStorage.removeItem('branch');
       }
   }

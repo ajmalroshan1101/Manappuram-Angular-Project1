@@ -23,11 +23,11 @@
 
 
     </div>
-    <button (click)="submitDates(startDate , endDate , selectedCity)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5">
-        Submit
-      </button>
 </div>
-
+<button (click)="submitDates(startDate , endDate , selectedCity)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5 ml-24">
+    Submit
+  </button>
+<h1 *ngIf="showtext" class="ml-24 text-lg mt-5">No Sales report is found</h1>
 <div class="container mx-auto py-8" [hidden]="show">
     <div class="overflow-x-auto">
         <table class="table-auto border-collapse border border-gray-500">
@@ -41,7 +41,6 @@
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">Net Wt</th>
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">Mtl Amt</th>
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">Gold Rate</th>
-                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Karat</th>
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">Cgst Amt</th>
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">Sgst Amt</th>
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">IgstAmt</th>
@@ -49,9 +48,6 @@
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">Final Amount</th>
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">Branch Name</th>
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">State</th>
-                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Sub Category</th>
-                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Product Style</th>
-                    <th class="px-4 py-2 bg-gray-100 border border-gray-500">Category</th>
                     <th class="px-4 py-2 bg-gray-100 border border-gray-500">Mobilizer</th>
                 </tr>
             </thead>
@@ -66,17 +62,14 @@
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.net_wt}}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.mtl_amt }}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.gold_rate }}</td>
-                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.karat}}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.cgst_amt }}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.sgst_amt }}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.igst_amt }}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.tcs_amt }}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.final_amount }}</td>
+
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.branch}}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.state }}</td>
-                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.sub_category }}</td>
-                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.product_style }}</td>
-                        <td class="px-4 py-2 bg-white border border-gray-500">{{ item.category }}</td>
                         <td class="px-4 py-2 bg-white border border-gray-500">{{ item.mobilizer }}</td>
                     </tr>
                 </tbody>

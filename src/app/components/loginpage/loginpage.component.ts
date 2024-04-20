@@ -15,6 +15,7 @@ export class LoginpageComponent {
      ){}
   
   usertype!:string;
+  branch!:string;
   message!:string;
   bool!:boolean;
 
@@ -23,16 +24,25 @@ export class LoginpageComponent {
     this.commonService.findUser(formData.value).subscribe({
       next:(data)=>{
         
-        console.log(data);
+     
         
         if(data.success === false){
           
           this.bool = true;
           this.message = 'Invalid user or Password'
         }else if(data.success === true){
-          // this.usertype = data.data[0].role_name;
-          // this.commonService.setuser(data.data[0]);
-          // this.commonService.storeuser(this.usertype);
+
+          //assigning the value to the variable
+          this.usertype = data.data[0].emp_name;
+
+          //for branch
+          this.branch = data.data[0].branch_name;
+         
+          this.commonService.storeuser(this.usertype);
+
+
+
+          this.commonService.storebranch(this.branch);
   
           // if(this.usertype === 'Casting'){
             

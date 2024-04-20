@@ -73,12 +73,23 @@ constructor(private http: HttpClient) {}
     return this.http.post<any[]>(`${this.baseUrl}/common/dateandbranchanddepartment`, {branch , department});
   }
 
-  employeweight(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/common/employeweight`);
+  employeweight(branch:any): Observable<any[]> {
+    return this.http.post<any[]>(`${this.baseUrl}/common/employeweight`,{branch});
   }
 
   salereport(from:Date , to:Date , branch :string):Observable<any[]>{
 
     return this.http.post<any[]>(`${this.baseUrl}/common/salereport` , {from , to , branch})
+  }
+
+  
+  finishedGoods(branch: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/common/finishedgoods`, {
+      branch,
+    });
+  }
+
+  showbranch():Observable<any[]>{
+    return this.http.get<any[]>(`${this.baseUrl}/common/showbranch`);
   }
 }

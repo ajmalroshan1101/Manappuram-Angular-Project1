@@ -11,7 +11,11 @@ import * as XLSX from 'xlsx';
 export class EmployestockComponent implements OnInit {
 
   constructor(private sharedservice:SharedService){}
+  selectedCity!:string ;
+  cities:any ;
 
+  show:boolean =true;
+ 
   exportToExcel(data: any[]) { 
     let count = 0;
     count++
@@ -24,14 +28,29 @@ export class EmployestockComponent implements OnInit {
 
   employedata:any []=[];
   ngOnInit(): void {
-    this.sharedservice.employeweight().subscribe({
+
+    this.sharedservice.showbranch().subscribe({
       next:(data)=>{
-       this.employedata = data;
-        
-      },
-      error:(err)=>{
+
+        this.cities = data
+      },error:(err)=>{
 
       }
     })
   }
+
+change(data:string){
+
+  this.sharedservice.employeweight(data).subscribe({
+    
+    next:(data)=>{
+     this.employedata = data;
+     this.show = false
+      
+    },
+    error:(err)=>{
+
+    }
+  })
+}
 }

@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../service/shared.service';
 import * as XLSX from 'xlsx';
+import { CommonService } from 'src/app/service/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
+
 export class DashboardComponent implements OnInit {
+
+  
   vendorcount!: number;
 
   customercount!: number;
 
   fromDate!: Date;
   toDate!: Date;
-  searchData1!: any[];
-  searchData2!: any[];
+  branch!: any;
   mergedData1!: any[];
   showTable: boolean = false;
+  lenghtofgcd!:any ;
+  totalSum:any 
 
   exportToExcel(data: any[]) { 
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
@@ -27,7 +33,7 @@ export class DashboardComponent implements OnInit {
     XLSX.writeFile(wb, 'export.xlsx');
 }
 
-  constructor(private sharedservice: SharedService) {}
+  constructor(private sharedservice: SharedService ,private route:Router , private commonservice:CommonService) {}
 
   ngOnInit(): void {
     this.sharedservice.showvendor().subscribe({
@@ -48,6 +54,25 @@ export class DashboardComponent implements OnInit {
         console.log(err);
       },
     });
+
+
+    this.branch  = this.commonservice.getbranch();
+
+    
+    //fetching the finished goods detalis 
+
+    this.sharedservice.finishedGoods(this.branch).subscribe({
+      next:(data)=>{
+
+        this.lenghtofgcd = data.length
+         this.totalSum = data.map(parseFloat).reduce((sum:any, value:any) => sum + value, 0);
+        console.log(this.totalSum);
+        
+      },
+      error:(err)=>{
+
+      }
+    })
   }
 
   submitForm() {
@@ -57,21 +82,9 @@ export class DashboardComponent implements OnInit {
     this.sharedservice.searchdate(this.fromDate, this.toDate).subscribe({
       next: (data) => {
 
-        this.searchData1 = data.result;
-        this.searchData2 = data.otherResult;
-
-        const mergedData = []
-        if(data.result.cust_id === data.otherResult.customer_id)
-        for (let index = 0; index < data.result.length; index++) {
-          const resultItem = data.result[index];
-          const otherResultItem = data.otherResult[index];
-          
-          const mergedItem= { ...resultItem, ...otherResultItem };
-         
-          mergedData.push(mergedItem)
-        }
         
-        this.mergedData1 = mergedData
+
+        this.mergedData1 = data;
         
         this.showTable = true;
       },
@@ -85,4 +98,5 @@ export class DashboardComponent implements OnInit {
 
     this.exportToExcel(this.mergedData1)
   }
+
 }
